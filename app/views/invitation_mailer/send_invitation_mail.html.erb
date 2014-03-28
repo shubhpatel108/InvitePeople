@@ -1,0 +1,3 @@
+<p>Hi <%= @email %>,<p>
+<p> To register on InvitationApp please follow link: </p>
+<p><%= link_to "register", "http://localhost:3000/#{@email}/#{@token}" %></p>

@@ -1,0 +1,5 @@
+<p>Enter emaill address of the person you want to invite <p>
+<%= form_tag(controller: "invitation", action: "send_invitation", method: "post") do %>
+	<input name="invitee_email" type="email" />
+	<input name="Invite!" type="submit" />
+<%end%>

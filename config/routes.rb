@@ -7,6 +7,9 @@ SimpleInvitation::Application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :login
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
+
+  get "/invite", to: 'invitation#invite_people', as: :invite_people
+  post "/send_invitation", to: 'invitation#send_invitation', as: :send_invitation
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
