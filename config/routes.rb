@@ -11,6 +11,7 @@ SimpleInvitation::Application.routes.draw do
   get "/invite", to: 'invitation#invite_people', as: :invite_people
   post "/send_invitation", to: 'invitation#send_invitation', as: :send_invitation
   get "/confirm_register/:email/:token", to: 'invitation#verify_request', as: :verify_request
+  post "/request_admin", to: 'invitation#request_admin', as: :request_admin
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

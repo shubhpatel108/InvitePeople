@@ -20,4 +20,16 @@ class InvitationController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def request_admin
+		email = params[:email]
+		if email.empty?
+			flash[:notice] = "Please enter email address"
+			redirect_to root_path
+		else
+			InvitationMailer.request_admin_mail(email).deliver
+			flash[:notice] = "Your request will soon be entertained."
+			redirect_to root_path
+		end
+	end
 end

@@ -7,4 +7,9 @@ class InvitationMailer < ActionMailer::Base
   	@token = token
   	mail(to: @email, subject: "Join Invitation site!")
   end
+
+  def request_admin_mail(email)
+  	@email = email
+  	mail(to:"admin@inviteapp.com", subject: "Request for registration")
+  end
 end

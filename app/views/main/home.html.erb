@@ -5,6 +5,11 @@
 	<%= link_to "Invite People", invite_people_path %>
 	<%= link_to "Log Out", logout_path %>
 <% else %>
-	<%= link_to 'Sign Up', new_user_registration_path %>	
+	<p>Request Admin to register</p>
+	<%= form_tag(controller: "invitation", action: "request_admin", method: "post") do %>
+		<input name="email" type="email" />
+		<input name="Invite!" type="submit" />
+	<%end%>
+	</br>
 	<%= link_to "Sign In", new_user_session_path %>
 <% end %>
