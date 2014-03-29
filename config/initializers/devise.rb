@@ -254,3 +254,5 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
+  $encryptor = ActiveSupport::MessageEncryptor.new("f5a9787c35a0f883ba876a3a9ec0176a") #the key used will be declared secretly
+  $verifier = ActiveSupport::MessageVerifier.new("f5a9787c35a0f883ba876a3a9ec0176a") #the key used will be declared secretly

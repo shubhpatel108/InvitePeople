@@ -21,26 +21,22 @@ class User < ActiveRecord::Base
   end
 
   def self.encrypt_token(token)
-    encryptor = ActiveSupport::MessageEncryptor.new("f5a9787c35a0f883ba876a3a9ec0176a")
-    encrypted_token = encryptor.encrypt_and_sign(token)
+    encrypted_token = $encryptor.encrypt_and_sign(token)
     sign_token(encrypted_token)
   end
 
   def self.sign_token(encrypted_token)
-    verifier = ActiveSupport::MessageVerifier.new("f5a9787c35a0f883ba876a3a9ec0176a")
-    signed_token = verifier.generate(encrypted_token)
+    signed_token = $verifier.generate(encrypted_token)
     signed_token
   end
 
   def self.verify_signature(signed_token)
-    verifier = ActiveSupport::MessageVerifier.new("f5a9787c35a0f883ba876a3a9ec0176a")
-    verified = verifier.verify(signed_token)
+    verified = $verifier.verify(signed_token)
     decrypt_token(verified)
   end
 
   def self.decrypt_token(verified)
-    encryptor = ActiveSupport::MessageEncryptor.new("f5a9787c35a0f883ba876a3a9ec0176a")
-    decrypted_token = encryptor.decrypt_and_verify(verified)
+    decrypted_token = $encryptor.decrypt_and_verify(verified)
     decode_token(decrypted_token)
   end
 
