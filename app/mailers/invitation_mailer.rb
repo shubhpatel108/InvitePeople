@@ -3,6 +3,7 @@ class InvitationMailer < ActionMailer::Base
 
   def send_invitation_mail(email, token)
   	@email = email
+  	@encoded_email = Base64::encode64(email)
   	@token = token
   	mail(to: @email, subject: "Join Invitation site!")
   end
