@@ -13,10 +13,15 @@ class InvitationController < ApplicationController
 	def verify_request
 		@email = params[:email]
 		@token = params[:token]
-		if User.verify_email_token(@email, @token)
-			logger.info("Success")
-			redirect_to new_user_registration_path(:email => @email)
-		else
+		begin
+			if User.verify_email_token(@email, @token)
+				logger.info("Success")
+				redirect_to new_user_registration_path(:email => @email)
+			else
+				redirect_to root_path
+			end
+		rescue
+			flash[:notice] = "Invalid or corrupted token"
 			redirect_to root_path
 		end
 	end
