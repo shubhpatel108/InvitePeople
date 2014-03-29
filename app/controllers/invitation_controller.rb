@@ -15,7 +15,7 @@ class InvitationController < ApplicationController
 		@token = params[:token]
 		if User.verify_email_token(@email, @token)
 			logger.info("Success")
-			redirect_to new_user_registration_path
+			redirect_to new_user_registration_path(:email => @email)
 		else
 			redirect_to root_path
 		end

@@ -1,6 +1,6 @@
 SimpleInvitation::Application.routes.draw do
   root to: 'main#home'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   devise_scope :user do
     get 'register', to: 'devise/registrations#new', as: :register
